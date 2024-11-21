@@ -1,0 +1,4 @@
+[
+{ "_id" : "79Cb5GmW4U", "name" : "Administrator", "_wperm" : [  ], "_rperm" : [ "*" ], "_acl" : { "*" : { "r" : true } }, "_created_at" : { "$date" : "2019-12-16T05:51:26.181+0000" }, "_updated_at" : { "$date" : "2019-12-16T06:59:15.193+0000" } },
+{ "_id" : "uiQTOFVP5R", "name" : "User", "_wperm" : [ "role:Administrator" ], "_rperm" : [ "role:Administrator" ], "_acl" : { "role:Administrator" : { "w" : true, "r" : true } }, "_created_at" : { "$date" : "2019-12-16T05:51:52.566+0000" }, "_updated_at" : { "$date" : "2019-12-16T06:52:44.897+0000" } }
+]

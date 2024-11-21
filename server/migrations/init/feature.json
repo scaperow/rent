@@ -1,0 +1,12 @@
+[
+{ "_id" : "46RyqzGu0n", "code" : "COPYRIGHT", "_created_at" : { "$date" : "2019-12-16T13:49:24.733+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:37:55.626+0000" }, "label" : "版权保护", "description" : "用户可以删除或编辑文件自带的水印", "unit" : "", "planeB" : 1, "planeC" : 1, "planeA" : 0 },
+{ "_id" : "ZG5Rw2gnqn", "label" : "自动备份数量", "_created_at" : { "$date" : "2019-12-17T14:01:34.881+0000" }, "_updated_at" : { "$date" : "2020-01-01T16:49:07.280+0000" }, "code" : "BACKUP", "unit" : "", "planeB" : 1, "planeC" : 1, "planeA" : 0, "name" : "备份记录" },
+{ "_id" : "auHDur3s0E", "code" : "IMPORT", "_created_at" : { "$date" : "2019-12-29T05:41:48.400+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:38:10.041+0000" }, "label" : "导入", "description" : "", "unit" : "", "planeB" : 0, "planeC" : 1, "planeA" : 0 },
+{ "_id" : "sKw3xi0RJH", "label" : "可上传附件", "_created_at" : { "$date" : "2019-12-29T05:42:27.880+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:38:17.211+0000" }, "code" : "ATTACHMENT", "unit" : "m", "planeB" : 2, "planeC" : 2, "planeA" : 1 },
+{ "_id" : "9dB3nAcb9Q", "code" : "PRIVATE_FILE", "_created_at" : { "$date" : "2019-12-29T05:51:17.681+0000" }, "_updated_at" : { "$date" : "2020-01-01T16:48:58.985+0000" }, "label" : "私有文件数量", "unit" : "张", "planeB" : 29, "planeC" : -1, "planeA" : 0, "name" : "私有文件数量" },
+{ "_id" : "9SZcaNuYBY", "code" : "PUBLIC_FILE", "_created_at" : { "$date" : "2019-12-29T06:10:52.748+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:38:29.948+0000" }, "label" : "公开文件数量", "unit" : "", "description" : "", "planeB" : -1, "planeC" : -1, "planeA" : -1 },
+{ "_id" : "UXDXR1bGEY", "code" : "HISTORY", "_created_at" : { "$date" : "2019-12-29T06:14:04.404+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:38:13.697+0000" }, "label" : "备份记录", "unit" : "条", "planeB" : 20, "planeC" : -1, "planeA" : 0 },
+{ "_id" : "DQGdnuIeC7", "code" : "EXPORT", "_created_at" : { "$date" : "2019-12-29T06:26:17.242+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:38:03.481+0000" }, "label" : "导出全部格式", "unit" : "", "planeB" : 1, "planeC" : 1, "planeA" : 1 },
+{ "_id" : "naY0wdFodX", "label" : "分享", "_created_at" : { "$date" : "2019-12-29T06:26:36.299+0000" }, "_updated_at" : { "$date" : "2019-12-30T05:38:22.914+0000" }, "unit" : "", "planeB" : 1, "planeC" : 1, "planeA" : 1 },
+{ "_id" : "rdknIa23am", "label" : "自动保存", "_created_at" : { "$date" : "2019-12-29T06:26:47.988+0000" }, "_updated_at" : { "$date" : "2020-01-01T16:48:53.241+0000" }, "unit" : "", "planeB" : 1, "planeC" : 1, "planeA" : 1, "name" : "自动保存功能" }
+]

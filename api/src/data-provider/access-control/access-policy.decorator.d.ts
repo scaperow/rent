@@ -1,0 +1,1 @@
+export declare const AccessPolicy: (policyConfigs_0: import("./types").AllowedRoles<import("./types").AllowedRolesId>, ...policyConfigs_1: import("./types").PolicyMethod[]) => import("@nestjs/common").CustomDecorator<string>;

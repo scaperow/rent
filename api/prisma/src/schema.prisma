@@ -1,0 +1,371 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  email    String  @unique
+  orders   Order[]
+}
+
+enum Gender {
+  MALE
+  FAMALE
+}
+
+enum ContractStatus {
+  DRAFT
+  FORMAL
+  ABNORMAL
+  ABORTED
+  CANCELLED
+}
+
+enum AppointmentCondition {
+  PAYDEPOSIT
+  PAYLEASEFEE
+  RETURNDEPOSIT
+  RETURNMATERIAL
+}
+
+enum PayRule {
+  ABSOLUTE
+  PERCENTAGE
+}
+
+model Customer {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  address      String?
+  description  String?
+  gender       Gender?
+  name         String
+  tel          String
+  projects     Project[]
+  orders       Order[]
+  contracts    Contract[]
+  balance      Int           @default(0)
+  consumptions Consumption[]
+}
+
+model MaterialCategory {
+  id        Int        @id @default(autoincrement())
+  name      String
+  materials Material[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Material {
+  id             Int                  @id @default(autoincrement())
+  categoryId     Int
+  category       MaterialCategory     @relation(fields: [categoryId], references: [id])
+  unitId         Int
+  unit           Unit                 @relation(fields: [unitId], references: [id])
+  count          String?
+  description    String?
+  hasVariant     Boolean
+  name           String
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  units          UnitConversion[]
+  properties     PropertyOnMaterial[]
+  fee            Float?
+  salePrice      Float?
+  purchasePrice  Float?
+  masterId       Int?
+  master         Material?            @relation("MaterialVariants", fields: [masterId], references: [id])
+  children       Material[]           @relation("MaterialVariants")
+  disabled       Boolean              @default(false)
+  orderMaterial  OrderMaterial[]
+  materialLosses MaterialLoss[]
+  waybillBoxes   WaybillBox[]
+  losses         Loss[]
+  contractPrice  ContractPrice[]
+}
+
+model MaterialProperty {
+  id                  Int                     @id @default(autoincrement())
+  name                String
+  unitId              Int?
+  unit                Unit?                   @relation(fields: [unitId], references: [id])
+  createdAt           DateTime                @default(now())
+  updatedAt           DateTime                @updatedAt
+  predefineds         MaterialPropertyValue[]
+  propertyOnMaterials PropertyOnMaterial[]
+}
+
+model PropertyOnMaterial {
+  id                 Int                    @id @default(autoincrement())
+  materialId         Int
+  material           Material               @relation(fields: [materialId], references: [id])
+  materialPropertyId Int
+  materialProperty   MaterialProperty       @relation(fields: [materialPropertyId], references: [id])
+  value              String?
+  createdAt          DateTime               @default(now())
+  updatedAt          DateTime               @updatedAt
+  propertyValueId    Int?
+  propertyValue      MaterialPropertyValue? @relation(fields: [propertyValueId], references: [id])
+}
+
+model MaterialPropertyValue {
+  id                  Int                  @id @default(autoincrement())
+  value               String
+  materialProperty    MaterialProperty?    @relation(fields: [materialPropertyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  materialPropertyId  Int?
+  propertyOnMaterials PropertyOnMaterial[]
+}
+
+model Project {
+  id          Int        @id @default(autoincrement())
+  address     String?
+  customerId  Int
+  customer    Customer   @relation(fields: [customerId], references: [id])
+  description String?
+  name        String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  contracts   Contract[]
+  orders      Order[]
+}
+
+model Unit {
+  id                 Int                @id @default(autoincrement())
+  disabled           Boolean            @default(false)
+  name               String
+  unitConversions    UnitConversion[]
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  material           Material[]
+  materialProperties MaterialProperty[]
+  materialLosses     MaterialLoss[]
+  waybillBox         WaybillBox[]
+  orderMaterials     OrderMaterial[]
+}
+
+model UnitConversion {
+  id         Int      @id @default(autoincrement())
+  materialId Int
+  material   Material @relation(fields: [materialId], references: [id])
+  unitId     Int
+  unit       Unit     @relation(fields: [unitId], references: [id])
+  factor     String?
+  fee        Float?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Contract {
+  id           Int             @id @default(autoincrement())
+  number       String
+  customerId   Int
+  customer     Customer        @relation(fields: [customerId], references: [id])
+  projectId    Int
+  project      Project         @relation(fields: [projectId], references: [id])
+  startAt      DateTime
+  endAt        DateTime?
+  status       ContractStatus  @default(DRAFT)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  reviseId     Int?
+  revise       Contract?       @relation("ContractRevise", fields: [reviseId], references: [id])
+  revises      Contract[]      @relation("ContractRevise")
+  appointments Appointment[]
+  orders       Order[]
+  prices       ContractPrice[]
+}
+
+enum ConsumptionStatus {
+  SUCCESS
+}
+
+enum PaymentMode {
+  CASH
+  ALIPAY
+  WECHAT
+}
+
+model Consumption {
+  id               Int               @id @default(autoincrement())
+  customerId       Int
+  customer         Customer          @relation(fields: [customerId], references: [id])
+  status           ConsumptionStatus @default(SUCCESS)
+  createdAt        DateTime          @default(now())
+  paymentMode      PaymentMode       @default(CASH)
+  paymentAmount    Float             @default(0)
+  paymentToAccount String?
+  paymentToName    String?
+  appointmentId    Int?
+  appointment      Appointment?      @relation(fields: [appointmentId], references: [id])
+}
+
+enum AppointmentStatus {
+  NONPERFORMANCE
+  INEXECUTION
+  PERFORMED
+}
+
+model Appointment {
+  id                    Int                  @id @default(autoincrement())
+  contractId            Int
+  contract              Contract             @relation(fields: [contractId], references: [id])
+  condition             AppointmentCondition
+  forLessor             Boolean?
+  forTenantry           Boolean?
+  payAmount             Float
+  payRule               PayRule
+  status                AppointmentStatus    @default(NONPERFORMANCE)
+  automaticDeduction    Boolean              @default(true)
+  deductionConsumptions Consumption[]
+  performedAt           DateTime?
+  updatedAt             DateTime             @updatedAt
+  createdAt             DateTime             @default(now())
+  endAt                 DateTime
+}
+
+enum OrderFlow {
+  NONE
+  IN
+  OUT
+}
+
+enum OrderStatus {
+  DRAFT
+  PROCESSING
+  COMPLETED
+}
+
+model Order {
+  id         Int             @id @default(autoincrement())
+  name       String          @unique
+  customerId Int
+  customer   Customer        @relation(fields: [customerId], references: [id])
+  flow       OrderFlow       @default(NONE)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  materials  OrderMaterial[]
+  losses     OrderLoss[]
+  userId     Int
+  user       User            @relation(fields: [userId], references: [id])
+  status     OrderStatus     @default(DRAFT)
+  contractId Int
+  contract   Contract        @relation(fields: [contractId], references: [id])
+  driverId   Int?
+  driver     Driver?         @relation(fields: [driverId], references: [id])
+  waybills   Waybill[]
+  projectId  Int
+  project    Project         @relation(fields: [projectId], references: [id])
+}
+
+enum WaybillStatus {
+  NONE
+  INTRANSIT
+  Arrived
+}
+
+model Waybill {
+  id        Int           @id @default(autoincrement())
+  orderId   Int
+  order     Order         @relation(fields: [orderId], references: [id])
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  startAt   DateTime
+  endAt     DateTime
+  status    WaybillStatus @default(NONE)
+  driverId  Int
+  driver    Driver        @relation(fields: [driverId], references: [id])
+  boxes     WaybillBox[]
+}
+
+model WaybillBox {
+  id         Int      @id @default(autoincrement())
+  waybillId  Int
+  waybill    Waybill  @relation(fields: [waybillId], references: [id])
+  materialId Int
+  material   Material @relation(fields: [materialId], references: [id])
+  count      Float
+  unitId     Int
+  unit       Unit     @relation(fields: [unitId], references: [id])
+}
+
+model Driver {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  tel         String    @unique
+  carNumber   String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  address     String?
+  description String?
+  Order       Order[]
+  shipping    Waybill[]
+}
+
+model OrderMaterial {
+  id         Int         @id @default(autoincrement())
+  materialId Int
+  material   Material    @relation(fields: [materialId], references: [id])
+  count      Int         @default(0)
+  unitId     Int
+  unit       Unit        @relation(fields: [unitId], references: [id])
+  orderId    Int
+  order      Order       @relation(fields: [orderId], references: [id])
+  losses     OrderLoss[]
+}
+
+model OrderLoss {
+  id              Int           @id @default(autoincrement())
+  lossId          Int
+  loss            Loss          @relation(fields: [lossId], references: [id])
+  count           Float
+  orderMaterialId Int
+  orderMaterial   OrderMaterial @relation(fields: [orderMaterialId], references: [id])
+  orderId         Int
+  order           Order         @relation(fields: [orderId], references: [id])
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Loss {
+  id           Int            @id @default(autoincrement())
+  name         String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  materials    Material[]
+  orderLosses  OrderLoss[]
+  materialLoss MaterialLoss[]
+}
+
+model MaterialLoss {
+  id            Int      @id @default(autoincrement())
+  materialId    Int
+  material      Material @relation(fields: [materialId], references: [id])
+  lossId        Int
+  loss          Loss     @relation(fields: [lossId], references: [id])
+  payAmount     Float    @default(0)
+  payUnitId     Int?
+  payUnit       Unit?    @relation(fields: [payUnitId], references: [id])
+  autoFill      Boolean  @default(false)
+  autoFillCount Float    @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ContractPrice {
+  id            Int      @id @default(autoincrement())
+  materialId    Int
+  material      Material @relation(fields: [materialId], references: [id])
+  fee           Float
+  salePrice     Float
+  purchasePrice Float?
+  contractId    Int
+  contract      Contract @relation(fields: [contractId], references: [id])
+}

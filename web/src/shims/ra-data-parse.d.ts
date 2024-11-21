@@ -1,0 +1,2 @@
+declare module 'ra-data-parse';
+

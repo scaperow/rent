@@ -1,0 +1,14 @@
+[
+{ "_id" : "33mQVkZGwv", "name" : "脚手架", "unit" : "付", "price" : "3", "brokenPrice" : "200", "_created_at" : { "$date" : "2019-11-29T06:32:47.686+0000" }, "_updated_at" : { "$date" : "2019-11-29T06:32:47.686+0000" } },
+{ "_id" : "5sHo7YRmEF", "name" : "6m 架管", "unit" : "根", "price" : "1", "brokenPrice" : "10", "category" : "AHGkkjLpTo", "categoryUnit" : "6", "_created_at" : { "$date" : "2019-11-29T02:29:08.830+0000" }, "_updated_at" : { "$date" : "2019-11-29T02:30:12.058+0000" } },
+{ "_id" : "CJbAtziqfl", "name" : "1.2m 钢管", "unit" : "根", "price" : "1", "brokenPrice" : "10", "category" : "AHGkkjLpTo", "categoryUnit" : "1.2", "_created_at" : { "$date" : "2019-11-29T02:29:45.608+0000" }, "_updated_at" : { "$date" : "2019-11-29T02:29:54.455+0000" } },
+{ "_id" : "Sm5CmWZjAQ", "category" : "AHGkkjLpTo", "name" : "4.5 钢管", "unit" : "根", "categoryUnit" : "4.5", "_created_at" : { "$date" : "2019-11-28T09:51:28.264+0000" }, "_updated_at" : { "$date" : "2019-11-28T11:45:25.300+0000" } },
+{ "_id" : "TzakKPjA9n", "category" : "AHGkkjLpTo", "name" : "3m 钢管", "unit" : "根", "categoryUnit" : "3", "_created_at" : { "$date" : "2019-11-29T09:57:40.874+0000" }, "_updated_at" : { "$date" : "2019-11-29T09:57:40.874+0000" } },
+{ "_id" : "VopUwWoR1q", "name" : "1.5m 钢管", "unit" : "根", "price" : "1", "brokenPrice" : "10", "category" : "AHGkkjLpTo", "categoryUnit" : "1.5", "_created_at" : { "$date" : "2019-11-29T02:29:39.896+0000" }, "_updated_at" : { "$date" : "2019-11-29T02:29:59.188+0000" } },
+{ "_id" : "ZS7YLHqv8V", "category" : "AHGkkjLpTo", "name" : "4m 钢管", "unit" : "根", "categoryUnit" : "4", "price" : "0.1", "_created_at" : { "$date" : "2019-11-29T10:00:23.965+0000" }, "_updated_at" : { "$date" : "2019-11-29T10:00:23.965+0000" } },
+{ "_id" : "Zz0uLNfd44", "name" : "扣件", "unit" : "个", "price" : "0.02", "brokenPrice" : "0.5", "_created_at" : { "$date" : "2019-11-28T09:59:22.023+0000" }, "_updated_at" : { "$date" : "2019-11-29T10:36:31.507+0000" } },
+{ "_id" : "eTQslPvDfj", "name" : "2.5m 钢管", "unit" : "根", "price" : "1", "brokenPrice" : "10", "category" : "AHGkkjLpTo", "categoryUnit" : "2.5", "_created_at" : { "$date" : "2019-11-29T02:29:28.985+0000" }, "_updated_at" : { "$date" : "2019-11-29T02:30:08.741+0000" } },
+{ "_id" : "izyxRnZOmi", "name" : "丝杠", "unit" : "套", "categoryUnit" : "3", "price" : "0.1", "_created_at" : { "$date" : "2019-11-29T09:59:14.213+0000" }, "_updated_at" : { "$date" : "2019-11-29T09:59:14.213+0000" } },
+{ "_id" : "oUCHCzzMH6", "name" : "木架板", "unit" : "块", "price" : "1", "brokenPrice" : "10", "_created_at" : { "$date" : "2019-11-29T02:28:47.739+0000" }, "_updated_at" : { "$date" : "2019-11-29T02:28:47.739+0000" } },
+{ "_id" : "r8HqBwxeLb", "name" : "接头", "unit" : "个", "categoryUnit" : "4", "price" : "0.1", "_created_at" : { "$date" : "2019-11-29T10:00:50.718+0000" }, "_updated_at" : { "$date" : "2019-11-29T10:00:50.718+0000" } }
+]

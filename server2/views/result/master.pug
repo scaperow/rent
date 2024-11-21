@@ -1,0 +1,21 @@
+html
+  head
+    title 蓝图巴巴
+    link(rel="stylesheet" type="text/css" href='/stylesheets/result.css')
+    block style
+
+  body(style="display:flex;flex-direction:column;justify-content:space-between;align-items:stretch")
+    .logo(style="display:flex;flex-direction:row;justify-content:start;align-items:center;margin:16px") 
+      span 蓝图巴巴
+    div(style="display:flex;flex-direction:column;justify-content:center;align-items:center")
+      .container(style="padding:16px;")
+        block message
+        block container
+
+    .line
+    .footer
+      p © 2019 #{companyShortName}. 版权所有.
+      p
+        | #{companyName}
+
+  block script

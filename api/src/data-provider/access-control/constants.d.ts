@@ -1,0 +1,2 @@
+export declare const ACCESS_POLICY_OPTS_KEY = "ACCESS_POLICY_OPTS_KEY";
+export declare const POLICY_KEY = "ACCESS_POLICY_METADATA_KEY";

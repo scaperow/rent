@@ -1,0 +1,4 @@
+[
+{ "_id" : "M3owDua3gf", "startDate" : { "$date" : "2019-12-28T15:13:24.667+0000" }, "endDate" : { "$date" : "2020-12-28T15:13:24.667+0000" }, "code" : "MAX_HISTORY", "label" : "备份记录无上限", "_wperm" : [  ], "_rperm" : [ "p6d1iuw0Ww" ], "_acl" : { "p6d1iuw0Ww" : { "r" : true } }, "_created_at" : { "$date" : "2019-12-28T15:13:24.675+0000" }, "_updated_at" : { "$date" : "2019-12-28T15:13:24.675+0000" } },
+{ "_id" : "FXUYg1HCxa", "startDate" : { "$date" : "2019-12-28T16:45:32.708+0000" }, "endDate" : { "$date" : "2021-12-28T16:45:32.708+0000" }, "code" : "AUTO_BACKUP", "label" : "自动备份", "_wperm" : [  ], "_rperm" : [ "p6d1iuw0Ww" ], "_acl" : { "p6d1iuw0Ww" : { "r" : true } }, "_created_at" : { "$date" : "2019-12-28T16:45:32.713+0000" }, "_updated_at" : { "$date" : "2019-12-28T16:45:32.713+0000" } }
+]

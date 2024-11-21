@@ -1,0 +1,5 @@
+[
+{ "_id" : "McwtMD2FHo", "year" : 2, "_created_at" : { "$date" : "2019-12-18T03:38:36.520+0000" }, "_updated_at" : { "$date" : "2019-12-18T03:56:04.953+0000" }, "offPoint" : 0.9 },
+{ "_id" : "XFHdwbvqLF", "year" : 1, "_created_at" : { "$date" : "2019-12-18T03:38:23.623+0000" }, "_updated_at" : { "$date" : "2019-12-18T03:39:31.540+0000" }, "offPoint" : 1 },
+{ "_id" : "grDWkYbpOq", "year" : 3, "_created_at" : { "$date" : "2019-12-18T03:39:20.052+0000" }, "_updated_at" : { "$date" : "2019-12-18T03:56:06.107+0000" }, "offPoint" : 0.85 }
+]
